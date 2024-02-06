@@ -1,0 +1,8 @@
+<launch>
+    <include file="$(find learning_ros)/launch/hw2.launch"/>
+    <node pkg="learning_ros" name="distanceSub" type="distanceSub.py" output="screen">
+    </node>
+    <node pkg="rostopic" name="rostopic" type="rostopic" output="screen" args="echo /distanceTraveled"/>
+    <node pkg="rqt_graph" name= "rqt_graph" type="rqt_graph">
+        </node>
+</launch>
