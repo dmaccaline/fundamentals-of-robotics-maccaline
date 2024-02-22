@@ -1,8 +1,10 @@
 <launch>
+<!--include launch file for hw2, not hw3.
+hw3 launch file echos /distanceTraveled, and having two topics echoed in one terminal is messy-->
     <include file="$(find learning_ros)/launch/hw2.launch"/>
     <node pkg="learning_ros" name="distanceSub" type="distanceSub.py" output="screen">
     </node>
-    <node pkg="learning_ros" name="converstions" type="converstions.py" output="screen">
+    <node pkg="learning_ros" name="conversions" type="conversions.py" output="screen">
     </node>
     <node pkg="learning_ros" name="paramUpdater" type="paramUpdater.py" output="screen">
     </node>
