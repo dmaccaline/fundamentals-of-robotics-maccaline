@@ -10,6 +10,7 @@ from sensor_msgs.msg import Image
 global pub, pubWhite, pubYellow
 from cv_bridge import CvBridge
 import cv2
+import numpy as np
 
 #callback for subscriber
 def subscriberCallback(msg):
@@ -30,18 +31,19 @@ def subscriberCallback(msg):
     croppedHSV = cv2.cvtColor(cropped_image, cv2.COLOR_BGR2HSV)
 
     #applly gaussian blur
-    croppedHSV = cv2.GaussianBlur(croppedHSV,(13,13),0)
+    croppedHSV = cv2.GaussianBlur(croppedHSV,(9,9),0)
 
 
     whiteLines = cv2.inRange(croppedHSV, (0, 0, 120), (255, 45, 255))
-    yellowLines = cv2.inRange(croppedHSV, (0, 138, 157), (128, 255, 255))
+    yellowLines = cv2.inRange(croppedHSV, (0, 110, 125), (128, 255, 255))
 
     #apply erode/dilate to clean images
-    whiteLines = cv2.dilate(whiteLines, (5, 5), iterations=1)
-    whiteLines = cv2.erode(whiteLines, (5, 5), iterations=1)
+    kernel = np.ones((5, 5), np.uint8)
+    whiteLines = cv2.dilate(whiteLines, kernel, iterations=1)
+    whiteLines = cv2.erode(whiteLines, kernel, iterations=1)
 
-    yellowLines = cv2.erode(yellowLines, (5, 5), iterations=1)
-    yellowLines = cv2.dilate(yellowLines, (5, 5), iterations=1)
+    whiteLines = cv2.dilate(whiteLines, kernel, iterations=1)
+    yellowLines = cv2.erode(yellowLines, kernel, iterations=1)
 
     #convert to ros msg and publish
     rosImage = bridge.cv2_to_imgmsg(whiteLines, "mono8")
