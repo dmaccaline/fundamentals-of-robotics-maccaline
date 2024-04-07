@@ -33,15 +33,15 @@ def subscriberCallback(msg):
     croppedHSV = cv2.GaussianBlur(croppedHSV,(13,13),0)
 
 
-    whiteLines = cv2.inRange(croppedHSV, (20, 0, 180), (255, 30, 255))
+    whiteLines = cv2.inRange(croppedHSV, (0, 0, 120), (255, 45, 255))
     yellowLines = cv2.inRange(croppedHSV, (0, 138, 157), (128, 255, 255))
 
-    #apply open then close to clean image
-    whiteLines = cv2.morphologyEx(whiteLines, cv2.MORPH_OPEN, (5,5))
-    whiteLines = cv2.morphologyEx(whiteLines, cv2.MORPH_CLOSE, (5,5))
+    #apply erode/dilate to clean images
+    whiteLines = cv2.dilate(whiteLines, (5, 5), iterations=1)
+    whiteLines = cv2.erode(whiteLines, (5, 5), iterations=1)
 
-    yellowLines = cv2.morphologyEx(yellowLines, cv2.MORPH_OPEN, (5,5))
-    yellowLines = cv2.morphologyEx(yellowLines, cv2.MORPH_CLOSE, (5,5))
+    yellowLines = cv2.erode(yellowLines, (5, 5), iterations=1)
+    yellowLines = cv2.dilate(yellowLines, (5, 5), iterations=1)
 
     #convert to ros msg and publish
     rosImage = bridge.cv2_to_imgmsg(whiteLines, "mono8")
