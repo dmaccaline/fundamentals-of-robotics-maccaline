@@ -1,0 +1,10 @@
+<launch>
+    <node pkg="imageProcessing" name="detect_lines" type="detectLines.py" output="screen">
+    </node>
+    <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_cropped" args="/image_cropped"/>
+    <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_white" args="/image_white"/>
+    <node pkg="rqt_image_view" type="rqt_image_view" name="image_view_yellow" args="/image_yellow"/>
+<!--    <node pkg="rqt_image_view" type="rqt_image_view" name="original_image" args="/image"/>-->
+    <node pkg="image_processing_hw" type="image_pub_all.py" name="image_pub_all" output="screen">
+    </node>
+</launch>
