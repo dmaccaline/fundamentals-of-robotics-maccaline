@@ -1,0 +1,9 @@
+<launch>
+    <include file="$(find example_action_server)/launch/fibonacci.launch"/>
+    <include file="$(find example_service)/launch/fibonacci.launch"/>
+
+    <node pkg="action_service_hw" name="actionServiceHW" type="action_service_hw.py" output="screen">
+    </node>
+    <node pkg="rqt_console" type="rqt_console" name="rqt_console"/>
+
+</launch>
