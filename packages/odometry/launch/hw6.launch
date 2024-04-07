@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find odometry_hw)/launch/odom_hw.launch"/>
+    <node pkg="odometry" name="positionTracker" type="odometryHw.py" output="screen">
+    </node>
+</launch>
