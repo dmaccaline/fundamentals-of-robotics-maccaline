@@ -35,7 +35,7 @@ if __name__ == '__main__':
     res = serviceProxy(3)
     endTime = rospy.get_time()
     rospy.loginfo("Result from server: " + str(res))
-    rospy.loginfo("Code continued executing and result recieved in " + str(endTime-startTime) + " seconds")
+    rospy.loginfo("Code continued executing and result recieved in " + str(endTime-startTime) + " seconds for argument of 3")
 
     actionClient = actionlib.SimpleActionClient('fibonacci', example_action_server.msg.FibonacciAction)
     rospy.loginfo("Waiting for action service")
@@ -50,7 +50,35 @@ if __name__ == '__main__':
 
     rospy.loginfo("Result from Action Server: " + str(actionClient.get_result()))
     rospy.loginfo("Returned to code in " + str(endTime- startTime) + " seconds")
-    rospy.loginfo("Got result in " + str(resultTime - startTime) + " seconds")
+    rospy.loginfo("Got result in " + str(resultTime - startTime) + " seconds for an argument of 3")
+
+
+    startTime = rospy.get_time()
+    res = serviceProxy(5)
+    endTime = rospy.get_time()
+    rospy.loginfo("Result from server: " + str(res))
+    rospy.loginfo("Code continued executing and result recieved in " + str(endTime-startTime) + " seconds for an argument of 5")
+
+    actionClient = actionlib.SimpleActionClient('fibonacci', example_action_server.msg.FibonacciAction)
+    rospy.loginfo("Waiting for action service")
+    actionClient.wait_for_server()
+    rospy.loginfo("Action service found")
+
+    actionArg2 = example_action_server.msg.FibonacciGoal(order=5)
+    startTime = rospy.get_time()
+    actionClient.send_goal(actionArg2)
+    endTime = rospy.get_time()
+    actionClient.wait_for_result()
+    resultTime = rospy.get_time()
+
+    rospy.loginfo("Result from Action Server: " + str(actionClient.get_result()))
+    rospy.loginfo("Returned to code in " + str(endTime- startTime) + " seconds")
+    rospy.loginfo("Got result in " + str(resultTime - startTime) + " seconds for an argument of 5")
+
+
+
+
+
 
 
 
