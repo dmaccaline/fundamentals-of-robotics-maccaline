@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find controls_hw)/launch/start_dynamics.launch"/>
+    <node pkg="pid" name="pidController" type="pid.py" output="screen">
+    </node>
+</launch>
