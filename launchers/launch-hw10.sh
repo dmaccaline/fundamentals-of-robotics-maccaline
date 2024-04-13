@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HW_PACKAGE="homework10"
+HW_PACKAGE="action_service_hw"
 HW_LAUNCH="hw10.launch"
 
 source /environment.sh

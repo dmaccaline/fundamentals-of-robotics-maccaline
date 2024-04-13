@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HW_PACKAGE="homework7"
+HW_PACKAGE="imageProcessing"
 HW_LAUNCH="hw7.launch"
 
 source /environment.sh

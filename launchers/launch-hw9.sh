@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HW_PACKAGE="homework9"
+HW_PACKAGE="pid"
 HW_LAUNCH="hw9.launch"
 
 source /environment.sh

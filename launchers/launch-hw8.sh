@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HW_PACKAGE="homework8"
+HW_PACKAGE="imageProcessing"
 HW_LAUNCH="hw8.launch"
 
 source /environment.sh
