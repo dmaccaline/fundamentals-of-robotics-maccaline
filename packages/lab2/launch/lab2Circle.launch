@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="lab2" name="circle_control" type="circle_control.py" output="screen">
+    </node>
+</launch>
