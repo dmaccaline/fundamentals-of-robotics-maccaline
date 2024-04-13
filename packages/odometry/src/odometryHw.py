@@ -27,7 +27,7 @@ def subscriberCallback(msg):
 
     #Calculate deltaS/ change in rotation
     deltaS = (msg.dist_wheel_left + msg.dist_wheel_right)/2
-    deltaTheta = (msg.dist_wheel_left - msg.dist_wheel_right)/(.1)
+    deltaTheta = (msg.dist_wheel_right - msg.dist_wheel_left)/(.1)
 
     #Calculate change in position
     deltaX = deltaS * np.cos(position.theta + deltaTheta/2)
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     #Setup initial Position
     position = Pose2D()
     position.x = 0
-    position.y = 2
+    position.y = 0
     position.theta = 0
 
     #Set dubug flag
