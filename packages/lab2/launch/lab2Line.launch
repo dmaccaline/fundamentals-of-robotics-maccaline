@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="lab2" name="line_control" type="straightLine.py" output="screen">
+    </node>
+</launch>
