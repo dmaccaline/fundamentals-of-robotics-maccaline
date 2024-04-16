@@ -115,7 +115,8 @@ if __name__ == '__main__':
     pub = rospy.Publisher('/danietown/allLines', Image, queue_size=10)
     pubWhite = rospy.Publisher('/danietown/whiteLines', Image, queue_size=10)
     pubYellow = rospy.Publisher('/danietown/yellowLines', Image, queue_size=10)
-    sub = rospy.Subscriber("/image", Image, subscriberCallback, queue_size=1, buff_size=2**24)
-
+    #sub = rospy.Subscriber("/image", Image, subscriberCallback, queue_size=1, buff_size=2**24)
+    sub = rospy.Subscriber("/danietown/camera_node/image/compressed", Image, subscriberCallback, queue_size=1, buff_size = 2**24)
+    
     while not rospy.is_shutdown():
         rospy.spin()
