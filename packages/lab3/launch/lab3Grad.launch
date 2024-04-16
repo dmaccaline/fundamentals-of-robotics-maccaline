@@ -36,7 +36,8 @@
     </include>
 
     <group ns="$(env VEHICLE_NAME)">
-        YOUR NODE/PARAMS/ETC GO HERE
+        <node pkg="lab3" name="detect_lines" type="lab3.py" output="screen">
+    </node>
     </group>
 
 </launch>

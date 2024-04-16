@@ -1,3 +1,6 @@
+
+
+
 <launch>
 
     <arg name="veh" default="$(env VEHICLE_NAME)"/>
@@ -41,9 +44,11 @@
 
     </include>
 
+    <include file="$(find duckietown_demos)/launch/apriltag_detector.launch"/>
     <group ns="$(env VEHICLE_NAME)">
-        <node pkg="lab3" name="detect_lines" type="lab3.py" output="screen">
+    	<node pkg="lab4" name="lab4" type="lab4.py" output="screen">
     	</node>
+
     </group>
 
 </launch>

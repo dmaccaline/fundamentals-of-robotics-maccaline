@@ -39,6 +39,7 @@ if __name__ == '__main__':
 
     while not rospy.is_shutdown():
         if move:
+            print("\n\n\nLoop\n\n\n\n\n")
             pub.publish(moveCommand)
             rospy.sleep(5)
             pub.publish(stopCommand)

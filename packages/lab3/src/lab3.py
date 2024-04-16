@@ -39,6 +39,8 @@ def output_lines_color(original_image, lines, circleColor, lineColor):
 #callback for subscriber
 def subscriberCallback(msg):
     global pub, pubWhite, pubYellow
+    
+    print("Test")
     #Convert to cv image
     bridge = CvBridge()
     cvImage = bridge.imgmsg_to_cv2(msg, "bgr8")
