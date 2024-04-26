@@ -33,9 +33,8 @@ def subscriberCallback(msg):
     #applly gaussian blur
     croppedHSV = cv2.GaussianBlur(croppedHSV,(9,9),0)
 
-
-    whiteLines = cv2.inRange(croppedHSV, (0, 0, 120), (255, 45, 255))
-    yellowLines = cv2.inRange(croppedHSV, (0, 110, 125), (128, 255, 255))
+    whiteLines = cv2.inRange(croppedHSV, (0, 0, 160), (255, 45, 255))
+    yellowLines = cv2.inRange(croppedHSV, (0, 50, 140), (75, 180, 255))
 
     #apply erode/dilate to clean images
     kernel = np.ones((5, 5), np.uint8)

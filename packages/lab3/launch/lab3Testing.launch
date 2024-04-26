@@ -1,5 +1,5 @@
 <launch>
-    <node pkg="lab3" name="detect_lines" type="lab3.py" output="screen">
+    <node pkg="lab3" name="detect_lines" type="lab3Grad.py" output="screen">
     </node>
     <node pkg="rqt_image_view" type="rqt_image_view" name="all_lines" args="/danietown/allLines"/>
     <node pkg="rqt_image_view" type="rqt_image_view" name="white_lines" args="/danietown/whiteLines"/>
