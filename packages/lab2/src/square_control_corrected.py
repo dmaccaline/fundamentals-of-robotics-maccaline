@@ -31,11 +31,11 @@ if __name__ == '__main__':
 
     turnCommand = Twist2DStamped()
     turnCommand.v = 0
-    turnCommand.omega = -0.1
+    turnCommand.omega = -2.5
 
     moveStraight = Twist2DStamped()
-    moveStraight.v = .2
-    moveStraight.omega = .2
+    moveStraight.v = -.2
+    moveStraight.omega = 0
 
     commandStop = Twist2DStamped()
     commandStop.v = 0
@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
     #init publisher to turtle control topic
     debugPub = rospy.Publisher('/debugOut', String, queue_size=10)
-    pub = rospy.Publisher('/danietown/car_cmd_switch_node/cmd', WheelsCmdStamped, queue_size=10)
+    pub = rospy.Publisher('/danietown/car_cmd_switch_node/cmd', Twist2DStamped, queue_size=10)
     sub = rospy.Subscriber("/danietown/fsm_node/mode", FSMState, subscriberCallback)
 
     legs = 0
@@ -72,7 +72,7 @@ if __name__ == '__main__':
                 elif state == 2:
                     state = 3
                     currentMsg = turnCommand
-                    timeRemaining = 0.6
+                    timeRemaining = 0.58
                 else:
                     state = 0
                     currentMsg = commandStop
