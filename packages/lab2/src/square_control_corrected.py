@@ -77,4 +77,4 @@ if __name__ == '__main__':
                     state = 0
                     currentMsg = commandStop
                     timeRemaining = 1
-
+# Results: -3 -3
